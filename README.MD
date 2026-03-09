@@ -409,39 +409,3 @@ Worker
     阅读笔记
 ```
 
----
-
-# 安全建议
-
-建议修改：
-
-```
-API_TOKEN
-ADMIN_PASS
-```
-
-为更复杂的值，例如：
-
-```
-API_TOKEN = 9af81bdf234
-ADMIN_PASS = 8d92ksla991
-```
-
----
-
-# 可扩展功能
-
-可以继续增加：
-
-- 短链接系统
-- 全文搜索
-- Markdown 图片上传
-- 手机端编辑器
-- 访问统计图
-- 用户系统
-
----
-
-# License
-
-MIT License
