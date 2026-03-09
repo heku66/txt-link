@@ -1,3 +1,10 @@
+# 说明
+
+利用workers搭建一个txt文本站，可以在网页站添加，也可以使用api。
+
+原项目地址：https://github.com/1143520/txt-link.git
+
+
 # Cloudflare 部署步骤
 
 1. 创建 KV
@@ -127,14 +134,4 @@ curl -X POST \
 
 #1小时自动删除。
 ```
-# 访问 Markdown
 
-保存：
-
-README.md
-
-访问：
-
-https://xxx.workers.dev/README.md
-
-自动渲染。
