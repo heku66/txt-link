@@ -1,4 +1,4 @@
-#Cloudflare 部署步骤
+# Cloudflare 部署步骤
 
 1. 创建 KV
 
@@ -116,7 +116,7 @@ https://xxx.workers.dev/list?pass=888888
 
 https://xxx.workers.dev/delete?pass=888888&key=test
 
-六、TTL自动过期
+# TTL自动过期
 ```
 GitHub Action：
 
