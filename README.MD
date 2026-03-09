@@ -6,6 +6,7 @@
 
 使用ChatGPT扩展支持：
 
+- 支持API写入
 - Markdown 笔记
 - 实时预览
 - 私密笔记
