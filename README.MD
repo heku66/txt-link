@@ -1,20 +1,140 @@
-在项目https://github.com/bestK/anynote 的基础上进行汉化修改
+#Cloudflare 部署步骤
 
-# 效果如下
-![dd](https://jsd.1143520.xyz/gh/manji1143/picx-images-hosting@master/paste/picx-image.5mnwblqyex.avif)
+1. 创建 KV
 
-![ff](https://jsd.1143520.xyz/gh/manji1143/picx-images-hosting@master/paste/picx-image.4xumrl8pc3.png)
+  进入：
 
-![hh](https://jsd.1143520.xyz/gh/manji1143/picx-images-hosting@master/paste/picx-image.77dnb2v6gf.avif)
+ Cloudflare
+ 
+→ Workers & Pages
 
-已知bug:
+→ KV
 
-1、gist代码编辑器使用的vue组件
-https://cdn.jsdelivr.net/gh/justcaliturner/simple-code-editor@master/browser/deps/vue@3.3.4.min.js
-对于某些js代码会强行渲染，暂时没有排查出是哪些转义被遗漏了
+创建：
 
-2、KV数据同步有明显延迟
+Namespace name
 
-访问 https://yourdomain/list?passwd=开头设置的LIST_PASSWD
-可以查看所有文件
-![ee](https://jsd.1143520.xyz/gh/manji1143/picx-images-hosting@master/paste/picx-image.6pnlmi8p7z.avif)
+填写：NOTE
+
+2. 创建 Worker
+
+进入：
+
+Workers & Pages
+→ Create Worker
+
+点击：Edit Code
+
+把代码 全部替换为上面代码
+
+3. 绑定 KV
+
+进入：
+
+Settings
+→ Bindings
+
+添加：
+
+KV Namespace
+
+变量名：
+
+NOTE
+
+Namespace：
+
+选择刚创建的 KV。
+
+4. 修改密码
+
+代码顶部修改：
+
+const API_TOKEN="CHANGE_ME"
+
+const ADMIN_PASS="admin123"
+
+例如：
+
+API_TOKEN = ghtoken123
+
+ADMIN_PASS = 888888
+
+5. Deploy
+
+点击：
+
+Deploy
+
+得到地址：
+
+https://xxxx.workers.dev
+
+# 使用方法
+
+网页写笔记
+
+访问：
+
+https://xxxx.workers.dev
+
+GitHub Action 推送
+```
+name: push
+
+on:
+  workflow_dispatch
+
+jobs:
+
+  push:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: create data
+        run: |
+          echo "hello $(date)" > data.txt
+
+      - name: push
+        run: |
+          curl -X POST \
+          "https://xxx.workers.dev/set?token=ghtoken123&key=github" \
+          --data-binary @data.txt
+```
+
+访问：
+
+https://xxx.workers.dev/github
+
+# 查看列表
+
+https://xxx.workers.dev/list?pass=888888
+
+# 删除
+
+https://xxx.workers.dev/delete?pass=888888&key=test
+
+六、TTL自动过期
+```
+GitHub Action：
+
+curl -X POST \
+"https://xxx.workers.dev/set?token=ghtoken123" \
+-H "Content-Type: application/json" \
+-d '{"key":"cache","value":"data","ttl":3600}'
+
+#1小时自动删除。
+```
+# 访问 Markdown
+
+保存：
+
+README.md
+
+访问：
+
+https://xxx.workers.dev/README.md
+
+自动渲染。
