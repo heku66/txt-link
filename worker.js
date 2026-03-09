@@ -4,8 +4,8 @@ export default {
   }
 };
 
-const API_TOKEN = "g6813";
-const ADMIN_PASS = "g6813";
+const API_TOKEN = "mytoken";
+const ADMIN_PASS = "admin123";
 
 async function handleRequest(request, env) {
 
