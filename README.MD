@@ -2,7 +2,9 @@
 
 一个基于 **Cloudflare Workers + KV** 的轻量级云笔记系统。
 
-支持：
+原项目链接：https://github.com/1143520/txt-link.git
+
+使用ChatGPT扩展支持：
 
 - Markdown 笔记
 - 实时预览
