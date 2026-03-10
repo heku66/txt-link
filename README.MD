@@ -113,8 +113,8 @@ Cloudflare Worker
 │
 ├── NOTE
 │   ├── key
-│   ├── metadata.private
-│   └── metadata.expire
+│   ├── metadata.expire
+│   
 │
 └── view:key
     └── 访问统计
@@ -228,7 +228,6 @@ https://你的域名/
 ```
 访问码  [留空随机码]
 过期时间 [秒，例如3600]
-☑ 私密笔记
 [保存]
 ```
 
@@ -265,13 +264,6 @@ https://你的域名/
 ```
 /abc12345
 ```
-
-如果是私密笔记：
-
-```
-/abc12345?token=API_TOKEN
-```
-
 ---
 
 # Markdown 示例
@@ -315,8 +307,7 @@ JSON：
 {
   "key": "test",
   "value": "# Hello",
-  "ttl": 3600,
-  "private": false
+  "ttl": 3600
 }
 ```
 
